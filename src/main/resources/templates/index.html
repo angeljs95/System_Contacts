@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head::head-section(title='Inicio')}"/>
+<body>
+
+<div th:replace="~{fragments/navbar::navbar-section}"/>
+
+<div class="container">
+    <div class=" container text-center" style="margin:30px">
+        <h2> Contacts System </h2> <br>
+    </div>
+    <div class="container">
+
+        <table class="table table-striped table-hover table-bordered align-middle">
+            <thead class="table-dark text-center">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+
+            <tr th:each="contact: ${contacts}">
+                <th th:text="${contact.id}" scope="row"></th>
+                <td th:text="${contact.nameContact}"></td>
+                <td th:text="${contact.phone}"></td>
+                <td th:text="${contact.email}"></td>
+                <td class="text-center">
+
+                    <a th:href="@{/update/__${contact.id}__}" class="btn btn-primary btn-sm me-3"> Update</a>
+                    <!-- Tambien se puede acceder al id de la siguiebte forma  -->
+                    <a th:href="@{/delete/{id}(id=${contact.id})}" class="btn btn-danger btn-sm me-3"> Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer::footer-section}"/>
+
+</body>
+</html>

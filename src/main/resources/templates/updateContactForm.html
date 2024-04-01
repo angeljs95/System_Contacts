@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head::head-section(title=' Add Contact')}"/>
+<body>
+<div th:replace="~{fragments/navbar::navbar-section}"/>
+
+<div class="container">
+    <div class="text-center" style="margin: 30px ">
+        <h2> Add Employee</h2>
+    </div>
+    <form class=" row g-3" action="/update" th:object="${contact}" method="POST">
+        <input type="hidden" th:field="*{id}" />
+        <div class="mb-3">
+            <label for="name" class="form-label">Enter name: </label>
+            <input type="text" class="form-control" id="name" name="nameContact" placeholder="Johnson..." required="true" th:field="*{nameContact}">
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Enter phone number: </label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="414578..." th:field="*{phone}" >
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Enter email: </label>
+            <input type="email" step="any" class="form-control" id="email" name="email" placeholder="asd@asf...."  th:field="*{email}">
+        </div>
+        <div class="text-center">
+            <a href="/" class="btn btn-danger btn-md me-3">return</a>
+            <button type="submit" class="btn btn-warning btn-md">Save</button>
+        </div>
+    </form>
+
+</div>
+
+
+
+</body>
+</html>
